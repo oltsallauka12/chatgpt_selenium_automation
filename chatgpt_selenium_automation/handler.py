@@ -55,10 +55,11 @@ class ChatGPTAutomation:
     def setup_webdriver(self, port):
         """  Initializes a Selenium WebDriver instance, connected to an existing Chrome browser
              with remote debugging enabled on the specified port"""
-
+        
         chrome_options = webdriver.ChromeOptions()
         chrome_options.binary_location = self.chrome_driver_path
         chrome_options.add_experimental_option("debuggerAddress", f"127.0.0.1:{port}")
+        chrome_options.add_argument('--no-sandbox')  # Add this line
         driver = webdriver.Chrome(options=chrome_options)
         return driver
 
